@@ -15,6 +15,14 @@ const content = {
         appID: "QUMGU599JQ.in.goindigo.IndiGo.uat.debug",
         paths: ["*"],
       },
+      {
+            "appID": "QUMGU599JQ.in.goindigo.IndiGo",
+            "paths": ["*"]
+        },
+        {
+            "appID": "QUMGU599JQ.in.goindigo.IndiGo.debug",
+            "paths": ["*"]
+        }
     ],
   },
 };
