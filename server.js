@@ -8,14 +8,6 @@ const content = {
     apps: [],
     details: [
       {
-        appID: "QUMGU599JQ.in.goindigo.IndiGo.uat",
-        paths: ["*"],
-      },
-      {
-        appID: "QUMGU599JQ.in.goindigo.IndiGo.uat.debug",
-        paths: ["*"],
-      },
-      {
             "appID": "QUMGU599JQ.in.goindigo.IndiGo",
             "paths": ["*"]
         },
