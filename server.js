@@ -4,11 +4,10 @@ const app = express();
 const port = 443; // 80 or 443 in production
 
 const content = {
-
   "applinks": {
     "details": [
       {
-        "appIDs": ["QUMGU599JQ.in.goindigo.IndiGo.uat", "QUMGU599JQ.in.goindigo.IndiGo.uat.debug"],
+        "appIDs": ["8MRL5ZLUXW.in.goindigo.IndiGo.preprod", "8MRL5ZLUXW.in.goindigo.IndiGo.preprod.debug"],
         "components": [
           {
             "/": "/loyalty/*",
@@ -45,10 +44,10 @@ const content = {
     ]
   },
   "webcredentials": {
-    "apps": ["QUMGU599JQ.in.goindigo.IndiGo.uat"]
+    "apps": ["8MRL5ZLUXW.in.goindigo.IndiGo.preprod"]
   },
   "appclips": {
-    "apps": ["QUMGU599JQ.in.goindigo.IndiGo.uat.debug"]
+    "apps": ["8MRL5ZLUXW.in.goindigo.IndiGo.preprod"]
   }
 };
 
