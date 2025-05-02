@@ -42,6 +42,7 @@ const content = {
           },
           {
             "/": "/",
+            exclude:false,
             "comment": "Allow all other URLs by default."
           }
         ]
