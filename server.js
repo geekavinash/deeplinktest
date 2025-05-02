@@ -4,6 +4,7 @@ const app = express();
 const port = 443; // 80 or 443 in production
 
 const content = {
+
   "applinks": {
     "details": [
       {
@@ -38,6 +39,10 @@ const content = {
             "*": "*cid=metasearch|wego*",
             "exclude": true,
             "comment": "Excludes any URL with the keyword cid=metasearch|wego in the query parameters."
+          },
+          {
+            "/": "/",
+            "comment": "Allow all other URLs by default."
           }
         ]
       }
