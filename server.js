@@ -24,6 +24,11 @@ const content = {
             "/": "/?ui-ux=oldui",
             "exclude": true,
             "comment": "Matches any URL with the query parameter ui-ux=oldui and excludes it from universal links."
+          },
+          {
+            "/": "/",
+            "exclude": false,
+            "comment": "."
           }
         ]
       }
