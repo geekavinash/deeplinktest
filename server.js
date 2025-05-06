@@ -1,78 +1,80 @@
-// server.js
 const express = require('express');
 const app = express();
-const port = 443; // 80 or 443 in production
+const path = require('path');
+const port = 443; // or 80 in production
 
+// JSON content
 const contentPreprod = {
-    "applinks": {
-    "apps": [],
-    "details": [
-        {
-            "appID": "8MRL5ZLUXW.in.goindigo.IndiGo.preprod",
-            "paths": ["*"]
-        },
-        {
-            "appID": "8MRL5ZLUXW.in.goindigo.IndiGo.preprod.debug",
-            "paths": ["*"]
-        }
-    ]
-    }
+  applinks: {
+    apps: [],
+    details: [
+      {
+        appID: '8MRL5ZLUXW.in.goindigo.IndiGo.preprod',
+        paths: ['*'],
+      },
+      {
+        appID: '8MRL5ZLUXW.in.goindigo.IndiGo.preprod.debug',
+        paths: ['*'],
+      },
+    ],
+  },
 };
 
 const contentUat = {
-
-  "applinks": {
-    "details": [
+  applinks: {
+    details: [
       {
-        "appIDs": ["QUMGU599JQ.in.goindigo.IndiGo.uat", "QUMGU599JQ.in.goindigo.IndiGo.uat.debug"],
-        "components": [
-          {
-            "/": "/loyalty/*",
-            "exclude": true,
-            "comment": "Matches any URL with a path that starts with /loyalty or anything after it and instructs the system not to open it as a universal link."
-          },
-          {
-            "/": "/hotels*",
-            "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
-          },
-            {
-            "/": "/flights*",
-            "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
-          },
-          {
-            "/": "/web-check-in.html",
-            "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
-          },
-          {
-            "/": "/?ui-ux=oldui",
-            "exclude": true,
-            "comment": "Matches any URL with the query parameter ui-ux=oldui and excludes it from universal links."
-          }
-        ]
-      }
-    ]
+        appIDs: [
+          'QUMGU599JQ.in.goindigo.IndiGo.uat',
+          'QUMGU599JQ.in.goindigo.IndiGo.uat.debug',
+        ],
+        components: [
+          { '/': '/loyalty/*', exclude: true },
+          { '/': '/hotels*' },
+          { '/': '/flights*' },
+          { '/': '/web-check-in.html' },
+          { '/': '/?ui-ux=oldui', exclude: true },
+        ],
+      },
+    ],
   },
-  "webcredentials": {
-    "apps": ["QUMGU599JQ.in.goindigo.IndiGo.uat"]
+  webcredentials: {
+    apps: ['QUMGU599JQ.in.goindigo.IndiGo.uat'],
   },
-  "appclips": {
-    "apps": ["QUMGU599JQ.in.goindigo.IndiGo.uat.debug"]
-  }
-}
+  appclips: {
+    apps: ['QUMGU599JQ.in.goindigo.IndiGo.uat.debug'],
+  },
+};
 
-// Serve at /apple-app-site-association
+// Serve apple-app-site-association
 app.get('/apple-app-site-association', (req, res) => {
-  res.setHeader('Content-Type', 'application/json'); // Required
+  res.setHeader('Content-Type', 'application/json');
   res.status(200).send(JSON.stringify(contentUat));
 });
 
-// Serve at /.well-known/apple-app-site-association
 app.get('/.well-known/apple-app-site-association', (req, res) => {
-  res.setHeader('Content-Type', 'application/json'); // Required
+  res.setHeader('Content-Type', 'application/json');
   res.status(200).send(JSON.stringify(contentUat));
 });
 
+// Serve static HTML pages
+app.get('/', (req, res) => {
+  res.send('<h1>Home Page</h1>');
+});
+
+app.get('/hotels', (req, res) => {
+  res.send('<h1>Hotels Page</h1>');
+});
+
+app.get('/flights', (req, res) => {
+  res.send('<h1>Flights Page</h1>');
+});
+
+app.get('/web-check-in.html', (req, res) => {
+  res.send('<h1>Web Check-In Page</h1>');
+});
+
+// Start server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-
