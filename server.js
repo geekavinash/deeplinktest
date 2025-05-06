@@ -22,6 +22,7 @@ const contentPreprod = {
 
 const contentUat = {
   applinks: {
+    apps:[],
     details: [
       {
         appIDs: [
