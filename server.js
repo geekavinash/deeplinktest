@@ -32,29 +32,21 @@ const contentUat = {
             "comment": "Matches any URL with a path that starts with /loyalty or anything after it and instructs the system not to open it as a universal link."
           },
           {
-            "/": "hotels*",
-            "exclude": true,
+            "/": "/hotels*",
+            "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
+          },
+            {
+            "/": "/flights*",
+            "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
+          },
+          {
+            "/": "/web-check-in.html",
             "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
           },
           {
             "/": "/?ui-ux=oldui",
             "exclude": true,
             "comment": "Matches any URL with the query parameter ui-ux=oldui and excludes it from universal links."
-          },
-          {
-            "*": "*cid=metasearch|googleflights*",
-            "exclude": true,
-            "comment": "Excludes any URL with the keyword cid=metasearch|googleflights in the query parameters."
-          },
-          {
-            "*": "*cid=metasearch|skyscanner*",
-            "exclude": true,
-            "comment": "Excludes any URL with the keyword cid=metasearch|skyscanner in the query parameters."
-          },
-          {
-            "*": "*cid=metasearch|wego*",
-            "exclude": true,
-            "comment": "Excludes any URL with the keyword cid=metasearch|wego in the query parameters."
           }
         ]
       }
