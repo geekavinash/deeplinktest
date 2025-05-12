@@ -47,20 +47,6 @@ const contentUat = {
   },
 };
 
-// Serve the PKPass file directly
-app.get('/uuyappleboardingpass.pkpass', (req, res) => {
-  const filePath = path.join(__dirname, 'uuyappleboardingpass.pkpass');
-
-  // Check if file exists
-  if (fs.existsSync(filePath)) {
-    res.setHeader('Content-Type', 'application/vnd.apple.pkpass');
-    res.download(filePath); // triggers download
-    // Or use: res.sendFile(filePath); // if you want it to open directly
-  } else {
-    res.status(404).send('PKPass file not found');
-  }
-});
-
 // Serve apple-app-site-association
 app.get('/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
