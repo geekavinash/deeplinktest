@@ -47,6 +47,51 @@ const contentUat = {
   },
 };
 
+const contentUatAndroid = [
+    {
+      relation: ['delegate_permission/common.handle_all_urls'],
+      target: {
+        namespace: 'android_app',
+        package_name: 'in.goindigo.android.uat',
+        sha256_cert_fingerprints: [
+          '76:C4:0A:97:84:E0:EA:6C:37:33:D0:7D:E6:2F:58:69:DC:EB:C5:C4:CF:2C:54:54:9C:62:2F:3B:F1:4E:66:00'
+        ],
+        paths: [
+          '/hotels*',
+          '/flights*',
+          '/web-check-in.html',
+          '!/loyalty/*',
+          '!/?ui-ux=oldui'
+        ]
+      }
+    },
+    {
+      relation: ['delegate_permission/common.handle_all_urls'],
+      target: {
+        namespace: 'android_app',
+        package_name: 'in.goindigo.android.uat.debug',
+        sha256_cert_fingerprints: [
+          '76:C4:0A:97:84:E0:EA:6C:37:33:D0:7D:E6:2F:58:69:DC:EB:C5:C4:CF:2C:54:54:9C:62:2F:3B:F1:4E:66:00'
+        ],
+        paths: [
+          '/hotels*',
+          '/flights*',
+          '/web-check-in.html',
+          '!/loyalty/*',
+          '!/?ui-ux=oldui'
+        ]
+      }
+    }
+  ];
+
+// Serve assetlinks.json for Android
+app.get('/.well-known/assetlinks.json', (req, res) => {
+  const assetlinks = contentUatAndroid;
+  res.setHeader('Content-Type', 'application/json');
+  res.status(200).send(JSON.stringify(assetlinks));
+});
+
+
 // Serve apple-app-site-association
 app.get('/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
