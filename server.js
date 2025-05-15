@@ -78,40 +78,48 @@ const contentUat = {
 
 const contentProdAndroid = [
     {
-      relation: ['delegate_permission/common.handle_all_urls'],
-      target: {
-        namespace: 'android_app',
-        package_name: 'in.goindigo.android',
-        sha256_cert_fingerprints: [
-          '76:C4:0A:97:84:E0:EA:6C:37:33:D0:7D:E6:2F:58:69:DC:EB:C5:C4:CF:2C:54:54:9C:62:2F:3B:F1:4E:66:00'
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
         ],
-        paths: [
-          '/hotels*',
-          '/flights*',
-          '/web-check-in.html',
-          '!/loyalty/*',
-          '!/?ui-ux=oldui'
-        ]
-      }
+        "target": {
+            "namespace": "android_app",
+            "package_name": "in.goindigo.android.debug",
+            "sha256_cert_fingerprints": [
+                "BA:71:8D:26:9F:0D:2E:D1:2A:5B:D6:93:7B:DD:59:DE:10:A1:5A:38:F7:0F:E9:3E:67:95:ED:D5:77:22:FF:23"
+            ],
+            "paths": [
+                "/hotels*",
+                "/flights*",
+                "/web-check-in.html",
+                "!/loyalty/*",
+                "!/?ui-ux=oldui",
+                "!/digiyatraapp",
+                "/digiyatra"
+            ]
+        }
     },
     {
-      relation: ['delegate_permission/common.handle_all_urls'],
-      target: {
-        namespace: 'android_app',
-        package_name: 'in.goindigo.android.debug',
-        sha256_cert_fingerprints: [
-          '76:C4:0A:97:84:E0:EA:6C:37:33:D0:7D:E6:2F:58:69:DC:EB:C5:C4:CF:2C:54:54:9C:62:2F:3B:F1:4E:66:00'
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
         ],
-        paths: [
-          '/hotels*',
-          '/flights*',
-          '/web-check-in.html',
-          '!/loyalty/*',
-          '!/?ui-ux=oldui'
-        ]
-      }
+        "target": {
+            "namespace": "android_app",
+            "package_name": "in.goindigo.android",
+            "sha256_cert_fingerprints": [
+                "52:95:4D:4F:59:41:A3:39:89:CD:D1:74:33:DE:67:E4:EA:3F:61:D1:E4:8B:9D:FA:BE:70:AD:E6:17:20:5B:E7"
+            ],
+            "paths": [
+                "/hotels*",
+                "/flights*",
+                "/web-check-in.html",
+                "!/loyalty/*",
+                "!/?ui-ux=oldui",
+                "!/digiyatraapp",
+                "/digiyatra"
+            ]
+        }
     }
-  ];
+];
 
 
 const contentUatAndroid = [
@@ -153,7 +161,7 @@ const contentUatAndroid = [
 
 // Serve assetlinks.json for Android
 app.get('/.well-known/assetlinks.json', (req, res) => {
-  const assetlinks = contentUatAndroid;
+  const assetlinks = contentProdAndroid;
   res.setHeader('Content-Type', 'application/json');
   res.status(200).send(JSON.stringify(assetlinks));
 });
