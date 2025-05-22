@@ -13,6 +13,8 @@ const contentPreprod = {
                     "8MRL5ZLUXW.in.goindigo.IndiGo.preprod.debug"
                 ],
                 "components": [
+                    {"/": "/test",
+  "comment": "Allow /tess for Universal Link"},
                     {
                       "/": "/*",
                       "comment": "Allow all paths by default"
