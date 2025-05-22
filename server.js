@@ -5,19 +5,62 @@ const port = 443; // or 80 in production
 
 // JSON content
 const contentPreprod = {
-  applinks: {
-    apps: [],
-    details: [
-      {
-        appID: '8MRL5ZLUXW.in.goindigo.IndiGo.preprod',
-        paths: ['*'],
-      },
-      {
-        appID: '8MRL5ZLUXW.in.goindigo.IndiGo.preprod.debug',
-        paths: ['*'],
-      },
-    ],
-  },
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "8MRL5ZLUXW.in.goindigo.IndiGo.preprod",
+                    "8MRL5ZLUXW.in.goindigo.IndiGo.preprod.debug"
+                ],
+                "components": [
+                    {
+                      "/": "/*",
+                      "comment": "Allow all paths by default"
+                    },
+                    {
+                        "/": "/loyalty/*",
+                        "exclude": true,
+                        "comment": "Matches any URL with a path that starts with /loyalty or anything after it and instructs the system not to open it as a universal link."
+                    },
+                    {
+                        "/": "hotels*",
+                        "exclude": true,
+                        "comment": "Matches any URL with a path that starts with /hotels or anything after it and instructs the system not to open it as a universal link."
+                    },
+                    {
+                        "/": "/?ui-ux=oldui",
+                        "exclude": true,
+                        "comment": "Matches any URL with the query parameter ui-ux=oldui and excludes it from universal links."
+                    },
+                    {
+                        "*": "*cid=metasearch|googleflights*",
+                        "exclude": true,
+                        "comment": "Excludes any URL with the keyword cid=metasearch|googleflights in the query parameters."
+                    },
+                    {
+                        "*": "*cid=metasearch|skyscanner*",
+                        "exclude": true,
+                        "comment": "Excludes any URL with the keyword cid=metasearch|skyscanner in the query parameters."
+                    },
+                    {
+                        "*": "*cid=metasearch|wego*",
+                        "exclude": true,
+                        "comment": "Excludes any URL with the keyword cid=metasearch|wego in the query parameters."
+                    }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "8MRL5ZLUXW.in.goindigo.IndiGo.preprod"
+        ]
+    },
+    "appclips": {
+        "apps": [
+            "8MRL5ZLUXW.in.goindigo.IndiGo.preprod"
+        ]
+    }
 };
 
 const contentProd = {
@@ -170,12 +213,12 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
 // Serve apple-app-site-association
 app.get('/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(contentProd));
+  res.status(200).send(JSON.stringify(contentPreprod));
 });
 
 app.get('/.well-known/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(contentProd));
+  res.status(200).send(JSON.stringify(contentPreprod));
 });
 
 // Serve static HTML pages
