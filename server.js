@@ -215,12 +215,12 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
 // Serve apple-app-site-association
 app.get('/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(contentPreprod));
+  res.status(200).send(JSON.stringify(contentUat));
 });
 
 app.get('/.well-known/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(contentPreprod));
+  res.status(200).send(JSON.stringify(contentUat));
 });
 
 // Serve static HTML pages
