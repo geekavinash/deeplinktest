@@ -283,6 +283,11 @@ app.get('/digiyatraapp', (req, res) => {
   res.send(html);
 });
 
+  app.get('/location', (req, res) => {
+    const filePath = path.join(__dirname, 'location.html');
+    res.sendFile(filePath);
+  });
+
 
 // Start server
 app.listen(port, () => {
