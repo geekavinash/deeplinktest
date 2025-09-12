@@ -104,7 +104,8 @@ const prodExcp = {
           "QUMGU599JQ.in.goindigo.IndiGo.debug"
         ],
         "components": [
-          { "/": "/flight-select-redirection.html" }
+          { "/": "/flight-select-redirection.html", "exclude":true },
+          { "/": "/hotels" }
         ]
       }
     ]
