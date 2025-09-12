@@ -94,6 +94,30 @@ const contentProd = {
   },
 };
 
+const prodExcp = {
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "QUMGU599JQ.in.goindigo.IndiGo",
+          "QUMGU599JQ.in.goindigo.IndiGo.debug"
+        ],
+        "components": [
+          { "/": "/flight-select-redirection.html" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["QUMGU599JQ.in.goindigo.IndiGo"]
+  },
+  "appclips": {
+    "apps": ["QUMGU599JQ.in.goindigo.IndiGo.debug"]
+  }
+}
+
+
 const contentUat = {
   applinks: {
     apps:[],
@@ -215,12 +239,12 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
 // Serve apple-app-site-association
 app.get('/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(contentProd));
+  res.status(200).send(JSON.stringify(prodExcp));
 });
 
 app.get('/.well-known/apple-app-site-association', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(contentProd));
+  res.status(200).send(JSON.stringify(prodExcp));
 });
 
 // Serve static HTML pages
