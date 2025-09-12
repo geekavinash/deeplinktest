@@ -312,6 +312,55 @@ app.get('/digiyatraapp', (req, res) => {
     res.sendFile(filePath);
   });
 
+app.get('/linkopener', (req, res) => {
+  res.type('html').send(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Link Opener</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    body { margin: 0; padding: 40px 16px; display: grid; place-items: center; min-height: 100vh; background:#f7f7f8; }
+    .wrap { width: 100%; max-width: 560px; background:#fff; border:1px solid #e6e6e7; border-radius:16px; padding:24px; box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+    h1 { font-size: 20px; margin: 0 0 16px 0; }
+    p { color:#555; margin:0 0 24px 0; }
+    .btns { display: grid; gap:12px; }
+    a.btn {
+      display: inline-block; text-decoration: none; text-align: center;
+      padding: 12px 14px; border-radius: 10px; border:1px solid #e2e2e3;
+      background:#0b5fff; color:#fff; font-weight:600; letter-spacing:.2px;
+    }
+    a.btn.secondary { background:#fff; color:#0b5fff; }
+    a.btn:hover { filter: brightness(0.96); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Open a link</h1>
+    <p>Choose a destination to open in a new tab.</p>
+    <div class="btns">
+      <a class="btn" target="_blank" rel="noopener"
+         href="https://deeeplink.itavinash.in/flight-select-redirection.html?flightNumber=2343&skyscanner_redirectid=WzDaBxyDQb6-CD82IM-bMw&cid=metasearch%7Cskyscanner#del/pnq/20250919/INR/100z">
+        Flight select redirection
+      </a>
+
+      <a class="btn secondary" target="_blank" rel="noopener"
+         href="https://deeplink.itavinash.in/hotels">
+        Hotels
+      </a>
+
+      <a class="btn secondary" target="_blank" rel="noopener"
+         href="https://deeplink.itavinash.in/flights">
+        Flights
+      </a>
+    </div>
+  </div>
+</body>
+</html>`);
+});
+
+
 
 // Start server
 app.listen(port, () => {
