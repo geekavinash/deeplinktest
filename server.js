@@ -231,9 +231,10 @@ const contentUatAndroid = [
 
 // Serve assetlinks.json for Android
 app.get('/.well-known/assetlinks.json', (req, res) => {
-  const assetlinks = null;
-  res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(JSON.stringify(assetlinks));
+  //const assetlinks = null;
+  //res.setHeader('Content-Type', 'application/json');
+  //res.status(404).send(JSON.stringify(assetlinks));
+    res.status(404);
 });
 
 
